@@ -12,28 +12,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-new-element">
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <div>Hello from <span>{{foo}}</span></div>
+    <span>{{computeFullName(first, last)}}</span>
   </template>
+
   <script>
   (function() {
-    'use strict';
-
     Polymer({
       is: 'my-new-element',
 
-      properties: {
-        foo: {
-          type: String,
-          value: 'my-new-element',
-          notify: true
-        }
+
+
+        properties: {
+        first: String,
+        last: String
+      },
+      computeFullName: function(first, last) {
+        return first + ' ' + last;
       }
+    
     });
   })();
   </script>
-</dom-module>
+  </dom-module>
