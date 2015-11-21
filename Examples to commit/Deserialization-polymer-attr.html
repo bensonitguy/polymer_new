@@ -1,0 +1,78 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- elements html file -->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="my-new-element">
+  <template>
+  <!--  <span>{{computeFullName(first, last)}}</span> -->
+  </template>
+
+  <script>
+  (function() {
+    Polymer({
+      is: 'my-new-element',
+        properties: {
+        first: String,
+        last: String,
+        name: String,
+
+        user  : {
+          type: String,
+          //value: 'Benson'
+        },
+        manager : {
+          type : Boolean,
+          notify : true,
+          //value : true
+        }
+      },
+      computeFullName: function(first, last) {
+        return first + ' ' + last;
+      },
+      ready: function(){
+
+        //if(this.user && this.manager) alert('Both object exists');
+        //alert();
+      },
+      attached: function(){
+        this.textContent = 'Hello world, my user is '+ (this.user || 'nobody') + '.' + ' This user is ' + (this.manager ? '' : 'not') + ' manager';
+      }
+
+    });
+  })();
+  </script>
+  </dom-module>
+
+<!-- main html page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<script type="text/javascript" src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="/elements/my-new-element/my-new-element.html">
+  <title>polymer demo </title>
+</head>
+<body>
+<span id="browser-sync-binding">
+
+</span>
+Hello Inside  world!!
+<span></span>
+
+
+<my-new-element user="Benson" manager=true></my-new-element>
+
+</body>
+</html>
+
+<!-- Output -->
+Hello world ! The user is Benson. The user is manager.
