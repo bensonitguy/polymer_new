@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
 <script type="text/javascript" src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-<link rel="import" href="/elements/my-new-element/my-new-element.html">
+<link rel="import" href="/elements/elements.html">
+
   <title>polymer demo </title>
 </head>
 <body>
@@ -13,8 +14,8 @@
 Hello Inside  world!!
 <span></span>
 
-
-<my-new-element first="Benson" last="Michael"></my-new-element>
+<observer-element>{{disabled}}</observer-element>
+<my-new-element user="Michael" manager="benson"></my-new-element>
 
 </body>
 </html>

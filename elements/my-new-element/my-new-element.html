@@ -9,27 +9,59 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 
 <dom-module id="my-new-element">
   <template>
-    <span>{{computeFullName(first, last)}}</span>
+  <!--  <span>{{computeFullName(first, last)}}</span> -->
+
+<span contenteditable="true">{{user}}</span>
+  <span contenteditable="true">{{firstname}}</span>
+
   </template>
 
   <script>
   (function() {
     Polymer({
       is: 'my-new-element',
-
-
-
         properties: {
         first: String,
-        last: String
+        last: String,
+        name: String,
+        firstname: {
+          type: String,
+          value: 'Michael',
+          notify:true
+        },
+
+        user  : {
+          type: String,
+          observer: '_userchanged',
+          notify:true
+        },
+        manager : {
+          type : Boolean,
+          notify : true,
+          //value : true
+        }
       },
       computeFullName: function(first, last) {
         return first + ' ' + last;
-      }
-    
+      },
+      ready: function(){
+
+        //if(this.user && this.manager) alert('Both object exists');
+        //alert();
+      },
+      attached: function(){
+      //  this.textContent = 'Hello world, my user is '+ (this.user || 'nobody') + '.' + ' This user is ' + (this.manager ? '' : 'not') + ' manager';
+    },
+    _userchanged: function(newvalue,oldvalue){
+      //alert();
+      this.firstname = newvalue + oldvalue;
+    }
+
     });
   })();
   </script>
